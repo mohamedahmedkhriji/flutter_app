@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quiiz/question.dart';
+import 'quiz_brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,27 +22,32 @@ class MyApp extends StatelessWidget {
 }
 
 class Moha extends StatefulWidget {
-  const Moha({super.key});
+  const Moha({Key? key});
 
   @override
   State<Moha> createState() => _MohaState();
 }
 
 class _MohaState extends State<Moha> {
-  List<Widget> scorekeeper = [];
-  List<Question> QuestionBank = [
-    Question(
-        q: 'The Japanese car company Toyota was originally established as a textiles manufacturer',
-        a: false),
-    Question(
-        q: 'The first speeding ticket was in 1896 for driving at 8MPH ',
-        a: false),
-    Question(
-        q: 'Henry Ford designed what was considered to be the world\'s first car',
-        a: false),
-  ];
+  List<Icon> scorekeeper = [];
 
-  int questionNumber = 0;
+  void checkAnswer(bool userPickAnswer) {
+    bool correctAnswer = quizBrain.getCorrectAnser();
+    setState(() {
+      if (userPickAnswer == correctAnswer) {
+        scorekeeper.add(Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      } else {
+        scorekeeper.add(Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
+      quizBrain.nextQuestion();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +57,16 @@ class _MohaState extends State<Moha> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
+            flex: 1,
+            child: Image.asset('assets/backgroundd.png'),
+          ),
+          Expanded(
             flex: 5,
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  QuestionBank[questionNumber].questionText,
+                  quizBrain.getQuestionText(),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),
@@ -73,18 +83,7 @@ class _MohaState extends State<Moha> {
                 child: TextButton(
                   onPressed: () {
                     //the user picked true,
-                    bool correctanser =
-                        QuestionBank[questionNumber].questionAnswer;
-                    if (correctanser == true) {
-                      print('User got it right!');
-                    } else {
-                      print('User got it wrong');
-                    }
-                    setState(() {
-                      questionNumber++;
-                    });
-
-                    print(questionNumber);
+                    checkAnswer(true);
                   },
                   child: Text(
                     'True',
@@ -104,18 +103,7 @@ class _MohaState extends State<Moha> {
                 child: TextButton(
                   onPressed: () {
                     //the user picked false,
-                    bool correctanser =
-                        QuestionBank[questionNumber].questionAnswer;
-                    if (correctanser == true) {
-                      print('User got it right!');
-                    } else {
-                      print('User got it wrong');
-                    }
-
-                    setState(() {
-                      questionNumber++;
-                    });
-                    print(questionNumber);
+                    checkAnswer(false);
                   },
                   child: Text(
                     'False',
@@ -125,8 +113,11 @@ class _MohaState extends State<Moha> {
               ),
             ),
           ),
-          Row(
-            children: scorekeeper,
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: scorekeeper,
+            ),
           ),
         ],
       ),
