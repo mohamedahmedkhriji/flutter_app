@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
+
 import 'question.dart';
 
 class QuizBrain {
   int _questionNumber = 0;
-  List<Question> _QuestionBank = [
+  final _QuestionBank = <Question>[
     Question(
         q: 'Is League of Legends developed and published by Blizzard Entertainment?',
         a: false),
@@ -122,8 +124,12 @@ class QuizBrain {
     if (_questionNumber < _QuestionBank.length - 1) {
       _questionNumber++;
     }
-    print(_questionNumber);
-    print(_QuestionBank.length);
+    if (kDebugMode) {
+      print(_questionNumber);
+    }
+    if (kDebugMode) {
+      print(_QuestionBank.length);
+    }
   }
 
   String getQuestionText() {

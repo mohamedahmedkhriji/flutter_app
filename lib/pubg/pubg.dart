@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:quiiz/dachboord/home.dart';
-import 'package:quiiz/lol/quiz_brain.dart';
+import 'package:quiiz/pubg/quiz_brain_pubg.dart';
 
-QuizBrain quizBrain = QuizBrain();
+QuizBrainPUBG quizBrainvalo = QuizBrainPUBG();
 
-class quiizlol extends StatelessWidget {
-  const quiizlol({Key? key});
+class quiizpubg extends StatelessWidget {
+  const quiizpubg({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
-        body: Moha(),
+        body: Pubg(),
       ),
     );
   }
 }
 
-class Moha extends StatefulWidget {
-  const Moha({Key? key});
+class Pubg extends StatefulWidget {
+  const Pubg({Key? key});
 
   @override
-  State<Moha> createState() => _MohaState();
+  State<Pubg> createState() => _PubgState();
 }
 
-class _MohaState extends State<Moha> {
+class _PubgState extends State<Pubg> {
   List<Icon> scorekeeper = [];
 
   void checkAnswer(bool userPickAnswer) {
-    bool correctAnswer = quizBrain.getCorrectAnser();
+    bool correctAnswer = quizBrainvalo.getCorrectAnswer();
     setState(() {
       if (userPickAnswer == correctAnswer) {
         scorekeeper.add(const Icon(
@@ -42,7 +42,7 @@ class _MohaState extends State<Moha> {
           color: Colors.red,
         ));
       }
-      quizBrain.nextQuestion();
+      quizBrainvalo.nextQuestion();
     });
   }
 
@@ -52,7 +52,7 @@ class _MohaState extends State<Moha> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(
-          'League of Legends',
+          'PUBG',
           style: TextStyle(color: Colors.white),
         ),
         leading: IconButton(
@@ -78,7 +78,7 @@ class _MohaState extends State<Moha> {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  quizBrain.getQuestionText(),
+                  quizBrainvalo.getQuestionText(),
                   textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 25.0, color: Colors.white),
                 ),

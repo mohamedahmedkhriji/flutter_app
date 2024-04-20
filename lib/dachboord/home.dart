@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiiz/free/ff.dart';
 import 'package:quiiz/lol/lol.dart';
+import 'package:quiiz/pubg/pubg.dart';
+import 'package:quiiz/valo/valo.dart';
 import 'color.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -10,11 +13,11 @@ class MyHomePage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Builder(builder: (context) {
       return Scaffold(
-          backgroundColor: Color(0xfff5f7fa),
+          backgroundColor: const Color(0xfff5f7fa),
           body: Column(children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   height: size.height * .3,
                   width: size.width,
                 ),
@@ -22,10 +25,10 @@ class MyHomePage extends StatelessWidget {
                 Positioned(
                     top: size.height * .15,
                     left: 30,
-                    child: Column(
+                    child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "My Games",
                             style: TextStyle(
                                 color: Colors.white,
@@ -36,7 +39,7 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
             DevicesGridDashboard(size: size),
-            ScenesDashboard()
+            const ScenesDashboard()
           ]));
     });
   }
@@ -73,11 +76,11 @@ class ScenesDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Text(
               "Account",
@@ -112,17 +115,12 @@ class ScenesDashboard extends StatelessWidget {
   }
 }
 
-class CardWidget extends StatefulWidget {
+class CardWidget extends StatelessWidget {
   Icon icon;
   String title;
   CardWidget({Key? key, required this.icon, required this.title})
       : super(key: key);
 
-  @override
-  State<CardWidget> createState() => _CardWidgetState();
-}
-
-class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -131,9 +129,9 @@ class _CardWidgetState extends State<CardWidget> {
         width: 200,
         child: Center(
           child: ListTile(
-            leading: widget.icon,
+            leading: icon,
             title: Text(
-              widget.title,
+              title,
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -170,26 +168,30 @@ class DevicesGridDashboard extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const quiiz()),
+                        MaterialPageRoute(builder: (context) => const Moha()),
                       );
                     },
                     child: Column(
                       children: [
-                        Container(
-                          child: Image.asset('assets/leaguelogo.jpg'),
-                        ),
+                        Image.asset('assets/leaguelogo.jpg'),
                       ],
                     ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/valologo.png'),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Valo()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset('assets/valologo.png'),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -199,23 +201,35 @@ class DevicesGridDashboard extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/pubglogo.png'),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Pubg()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset('assets/pubglogo.png'),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/fflogo.jpg'),
-                      ),
-                      Text('League of Leaguend'),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FreeFire()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset('assets/fflogo.jpg'),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -225,24 +239,36 @@ class DevicesGridDashboard extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/league.png'),
-                      ),
-                      Text('League of Leaguend'),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FreeFire()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset('assets/watch.jpg'),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/league.png'),
-                      ),
-                      Text('League of Leaguend'),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FreeFire()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset('assets/card.jpg'),
+                      ],
+                    ),
                   ),
                 ),
               ],
