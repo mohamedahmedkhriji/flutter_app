@@ -4,10 +4,12 @@ class Assets {
 
   static const String assetsBackgroundd = 'assets/backgroundd.png';
   static const String assetsBackkk = 'assets/backkk.jpg';
+  static const String assetsCard = 'assets/card.jpg';
   static const String assetsFflogo = 'assets/fflogo.jpg';
   static const String assetsLeague = 'assets/league.png';
   static const String assetsLeaguelogo = 'assets/leaguelogo.jpg';
   static const String assetsLogoleague = 'assets/logoleague.png';
   static const String assetsPubglogo = 'assets/pubglogo.png';
   static const String assetsValologo = 'assets/valologo.png';
+  static const String assetsWatch = 'assets/watch.jpg';
 }

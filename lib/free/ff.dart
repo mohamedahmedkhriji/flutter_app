@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:quiiz/dachboord/home.dart';
-import 'package:quiiz/lol/quiz_brain.dart';
+import 'package:quiiz/free/quiz_brain_ff.dart';
 
-QuizBrain quizBrain = QuizBrain();
+QuizBrainFreeFire quizBrainFreeFire =
+    QuizBrainFreeFire(); // Using the QuizBrainFreeFire class for Free Fire quiz
 
-class quiizlol extends StatelessWidget {
-  const quiizlol({Key? key});
+class QuizFreeFire extends StatelessWidget {
+  const QuizFreeFire({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
-        body: Moha(),
+        body: FreeFire(),
       ),
     );
   }
 }
 
-class Moha extends StatefulWidget {
-  const Moha({Key? key});
+class FreeFire extends StatefulWidget {
+  const FreeFire({Key? key});
 
   @override
-  State<Moha> createState() => _MohaState();
+  State<FreeFire> createState() => _FreeFireState();
 }
 
-class _MohaState extends State<Moha> {
+class _FreeFireState extends State<FreeFire> {
   List<Icon> scorekeeper = [];
 
   void checkAnswer(bool userPickAnswer) {
-    bool correctAnswer = quizBrain.getCorrectAnser();
+    bool correctAnswer = quizBrainFreeFire.getCorrectAnswer();
     setState(() {
       if (userPickAnswer == correctAnswer) {
         scorekeeper.add(Icon(
@@ -42,7 +43,7 @@ class _MohaState extends State<Moha> {
           color: Colors.red,
         ));
       }
-      quizBrain.nextQuestion();
+      quizBrainFreeFire.nextQuestion();
     });
   }
 
@@ -52,7 +53,7 @@ class _MohaState extends State<Moha> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'League of Legends',
+          'Free Fire',
           style: TextStyle(color: Colors.white),
         ),
         leading: IconButton(
@@ -78,7 +79,7 @@ class _MohaState extends State<Moha> {
               padding: EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  quizBrain.getQuestionText(),
+                  quizBrainFreeFire.getQuestionText(),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),

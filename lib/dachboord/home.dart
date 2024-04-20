@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiiz/free/ff.dart';
 import 'package:quiiz/lol/lol.dart';
+import 'package:quiiz/pubg/pubg.dart';
+import 'package:quiiz/valo/valo.dart';
 import 'color.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -112,17 +115,12 @@ class ScenesDashboard extends StatelessWidget {
   }
 }
 
-class CardWidget extends StatefulWidget {
+class CardWidget extends StatelessWidget {
   Icon icon;
   String title;
   CardWidget({Key? key, required this.icon, required this.title})
       : super(key: key);
 
-  @override
-  State<CardWidget> createState() => _CardWidgetState();
-}
-
-class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -131,9 +129,9 @@ class _CardWidgetState extends State<CardWidget> {
         width: 200,
         child: Center(
           child: ListTile(
-            leading: widget.icon,
+            leading: icon,
             title: Text(
-              widget.title,
+              title,
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -170,7 +168,7 @@ class DevicesGridDashboard extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const quiiz()),
+                        MaterialPageRoute(builder: (context) => Moha()),
                       );
                     },
                     child: Column(
@@ -184,12 +182,20 @@ class DevicesGridDashboard extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/valologo.png'),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Valo()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Image.asset('assets/valologo.png'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -199,23 +205,39 @@ class DevicesGridDashboard extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/pubglogo.png'),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Pubg()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Image.asset('assets/pubglogo.png'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/fflogo.jpg'),
-                      ),
-                      Text('League of Leaguend'),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FreeFire()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Image.asset('assets/fflogo.jpg'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -225,24 +247,40 @@ class DevicesGridDashboard extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/league.png'),
-                      ),
-                      Text('League of Leaguend'),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FreeFire()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Image.asset('assets/watch.jpg'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Image.asset('assets/league.png'),
-                      ),
-                      Text('League of Leaguend'),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FreeFire()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Image.asset('assets/card.jpg'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:quiiz/dachboord/home.dart';
-import 'package:quiiz/lol/quiz_brain.dart';
+import 'quiz_brain_valo.dart';
 
-QuizBrain quizBrain = QuizBrain();
+QuizBrainvalo quizBrainvalo = QuizBrainvalo();
 
-class quiizlol extends StatelessWidget {
-  const quiizlol({Key? key});
+class quiizvalo extends StatelessWidget {
+  const quiizvalo({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
-        body: Moha(),
+        body: Valo(),
       ),
     );
   }
 }
 
-class Moha extends StatefulWidget {
-  const Moha({Key? key});
+class Valo extends StatefulWidget {
+  const Valo({Key? key});
 
   @override
-  State<Moha> createState() => _MohaState();
+  State<Valo> createState() => _ValoState();
 }
 
-class _MohaState extends State<Moha> {
+class _ValoState extends State<Valo> {
   List<Icon> scorekeeper = [];
 
   void checkAnswer(bool userPickAnswer) {
-    bool correctAnswer = quizBrain.getCorrectAnser();
+    bool correctAnswer = quizBrainvalo.getCorrectAnswer();
     setState(() {
       if (userPickAnswer == correctAnswer) {
         scorekeeper.add(Icon(
@@ -42,7 +42,7 @@ class _MohaState extends State<Moha> {
           color: Colors.red,
         ));
       }
-      quizBrain.nextQuestion();
+      quizBrainvalo.nextQuestion();
     });
   }
 
@@ -52,7 +52,7 @@ class _MohaState extends State<Moha> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'League of Legends',
+          'Valorant',
           style: TextStyle(color: Colors.white),
         ),
         leading: IconButton(
@@ -78,7 +78,7 @@ class _MohaState extends State<Moha> {
               padding: EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  quizBrain.getQuestionText(),
+                  quizBrainvalo.getQuestionText(),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),
