@@ -1,7 +1,7 @@
 import 'dart:io';
 
 class AdsManager {
-  static bool testMode = true;
+  static bool testMode = false;
 
   static String get rewardedAdUnitId {
     if (Platform.isAndroid) {
