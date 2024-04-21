@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiiz/ads/ads.dart';
 import 'package:quiiz/free/ff.dart';
 import 'package:quiiz/lol/lol.dart';
 import 'package:quiiz/pubg/pubg.dart';
@@ -244,7 +245,7 @@ class DevicesGridDashboard extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const FreeFire()),
+                            builder: (context) => const HomePageA()),
                       );
                     },
                     child: Column(
